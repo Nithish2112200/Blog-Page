@@ -4,7 +4,7 @@ import { FaBell } from "react-icons/fa";
 
 function Header() {
   return (
-    <div className='h-20 bg-black flex items-center justify-between'>
+    <div className='h-20 bg-black flex items-center justify-between sticky top-0'>
         <img className='h-20 pl-10' src="https://variety.com/wp-content/uploads/2020/05/netflix-logo.png" alt="Logo Loading" />
         <div className='text-white flex gap-15'>
         <p className='text-red-500'>JMAN Blogs</p>

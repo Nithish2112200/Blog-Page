@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function SideBar() {
   return (
-    <div className='bg-black h-screen w-60 overflow-y-auto'>
+    <div className='bg-black h-screen w-60 overflow-y-auto sticky top-0'>
         <div>
             <ul className='text-white flex flex-col gap-15 font-bold items-center mt-35'>
             <LiaBlogSolid className='scale-200'/>
