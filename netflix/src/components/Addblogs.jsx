@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { PiGitlabLogoSimpleFill } from "react-icons/pi";
 function Addblogs() {
+  const [title,settitle]=useState('')
     const [url,seturl]=useState('');
     const [content,setcontent]=useState('');
     const [blogdata,setblogdata]=useState([]);
@@ -21,7 +22,7 @@ function Addblogs() {
 
     function handleSubmit(e){
         e.preventDefault();
-        const newdata={url,content};
+        const newdata={title,url,content};
         const updated=[...blogdata,newdata];
         setblogdata(updated);
         seturl('');
@@ -32,6 +33,13 @@ function Addblogs() {
   return (
     <div className='ml-15 mt-20'>
         <form onSubmit={handleSubmit} className='flex flex-col gap-10'>
+            <div className='flex flex-col gap-7'>
+            <div className='flex items-center gap-3'>
+            <label htmlFor="inputtitle" className='font-bold'>ENTER HEADING TITLE </label>
+            <PiGitlabLogoSimpleFill />
+            </div>
+            <input type="text" className='w-200 border-2 pl-3' value={title} placeholder='Title' onChange={(e)=>settitle(e.target.value)}/>
+            </div>
             <div className='flex flex-col gap-7'>
             <div className='flex items-center gap-3'>
             <label htmlFor="inputurl" className='font-bold'>ENTER IMAGE URL </label>
