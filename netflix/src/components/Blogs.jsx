@@ -1,31 +1,41 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
+
+import Card from './Card';
 
 function Blogs() {
   const [data,setdata]=useState([]);
+  const [like,setlike]=useState(false);
+  const [dislike,setdislike]=useState(0);
+  
+
 
   useEffect(()=>{
     const temp=JSON.parse(localStorage.getItem("storedarray"));
     setdata(temp);
-  },[])
+  },[like])
+
+  const handlelike = (index) => {
+    let retrive=JSON.parse(localStorage.getItem("storedarray"))
+    retrive[index].like+=1;
+    console.log(retrive[index])
+    localStorage.setItem("storedarray",JSON.stringify(retrive));
+    setlike(!like)
+  }
+  
+  function handledislike(){
+  }
 
   return (
     <>
         {
-          data.length === 0 ? (
+          !data ? (
             <p>No blogs added yet.</p>
           ) : 
           
           (
             <div>
           {data.map((item,index)=>(
-            
-           <div key={index} className=' p-3 flex container mt-2 border-b-2'>
-            {item.url && <img src={item.url} alt="Blog"  className='h-100 w-800'/> }
-            <div>
-            <p className='font-bold text-3xl text-center mb-5  text-gray-500 uppercase'>{item.title}</p>
-            <p className='pl-10 pr-8'>{item.content}</p>
-            </div>
-           </div>
+            <Card title = {item.title} url = {item.url} content ={item.content} like={item.like} index={index} handlelike={handlelike}/>
           ))}
           </div>
         )

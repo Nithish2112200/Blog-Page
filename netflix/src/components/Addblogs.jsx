@@ -4,6 +4,8 @@ function Addblogs() {
   const [title,settitle]=useState('')
     const [url,seturl]=useState('');
     const [content,setcontent]=useState('');
+    const [like,setlike]=useState(0);
+    const [dislike,setdislike]=useState(0);
     const [blogdata,setblogdata]=useState([]);
 
 
@@ -22,13 +24,14 @@ function Addblogs() {
 
     function handleSubmit(e){
         e.preventDefault();
-        const newdata={title,url,content};
+        const newdata={title,url,content,like,dislike};
         const updated=[...blogdata,newdata];
         setblogdata(updated);
         seturl('');
         setcontent('');
-        
+        settitle('');
     }
+
 
   return (
     <div className='ml-15 mt-20'>
@@ -59,5 +62,6 @@ function Addblogs() {
     </div>
   )
 }
+
 
 export default Addblogs
